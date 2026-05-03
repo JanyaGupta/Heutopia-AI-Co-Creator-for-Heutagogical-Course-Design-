@@ -27,6 +27,7 @@ Create a self-determined learning path with:
 - Reflection questions
 """
     return run_llama(prompt)
+
 def generate_assessment(topic, level, goal, assessment):
     prompt = f"""
 You are an AI assessor following **heutagogy**.
@@ -53,6 +54,7 @@ If Mini project:
 End with reflection questions.
 """
     return run_llama(prompt)
+
 
 def generate_resources(topic, level):
     prompt = f"""
@@ -176,3 +178,31 @@ Reflection: {story_map['reflection']}
     )
 
     return result.stdout.strip()
+
+
+import subprocess
+
+def generate_muddiest_point_explanation(muddiest_point):
+    prompt = f"""
+You are an expert operating systems tutor.
+
+A student has identified the following concept as their muddiest point:
+
+"{muddiest_point}"
+
+Explain this concept clearly in simple language.
+Use examples if helpful.
+Avoid jargon where possible.
+Keep the explanation concise and student-friendly.
+"""
+
+    result = subprocess.run(
+        ["ollama", "run", "llama3.1"],
+        input=prompt,
+        text=True,
+        capture_output=True
+    )
+
+    return result.stdout.strip()
+
+
