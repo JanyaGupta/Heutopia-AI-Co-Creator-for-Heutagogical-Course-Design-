@@ -1,4 +1,4 @@
-# Heutopia-AI-Co-Creator-for-Heutagogical-Course-Design-
+
 
 # Heutopia: AI Co-Creator for Heutagogical Course Design
 
